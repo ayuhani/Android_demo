@@ -2,25 +2,66 @@ package com.ayuhani.demo.chatview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ayuhani.demo.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private EditText etInput;
+    private Button btnSend;
+
+    private MsgAdapter msgAdapter;
+    private List<Msg> datas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initMsgs();
+        recyclerView   = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        msgAdapter = new MsgAdapter(datas);
+        recyclerView.setAdapter(msgAdapter);
+        etInput = findViewById(R.id.et_input);
+        btnSend = findViewById(R.id.btn_send);
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String content = etInput.getText().toString().trim();
+                if (TextUtils.isEmpty(content))
+                    return;
+                Msg msg = new Msg(content,Msg.TYPE_SENT);
+                datas.add(msg);
+                msgAdapter.notifyItemInserted(datas.size()-1);
+                recyclerView.scrollToPosition(datas.size()-1);
+                etInput.setText("");
+            }
+        });
     }
 
+    private void initMsgs() {
+        datas = new ArrayList<>();
+        datas.addAll(Arrays.asList(
+                new Msg("你好，基佬",Msg.TYPE_RECEIVED),
+                new Msg("你有病吧，你是谁啊？",Msg.TYPE_SENT),
+                new Msg("我是你爸爸！",Msg.TYPE_RECEIVED)
+        ));
+    }
 
 
     private static class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder>{
@@ -40,12 +81,21 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-
+            Msg msg = datas.get(position);
+            if (msg.getType()==Msg.TYPE_RECEIVED){
+                holder.layoutRight.setVisibility(View.GONE);
+                holder.layoutLeft.setVisibility(View.VISIBLE);
+                holder.tvLeft.setText(msg.getContent());
+            }else {
+                holder.layoutRight.setVisibility(View.VISIBLE);
+                holder.layoutLeft.setVisibility(View.GONE);
+                holder.tvRight.setText(msg.getContent());
+            }
         }
 
         @Override
         public int getItemCount() {
-            return 0;
+            return datas.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder{
