@@ -10,16 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".chatview.MainActivity">
-
         </activity>
         <activity android:name=".fragment.NewsActivity">
+
+        </activity>
+        <activity android:name=".fragment.NewsContentActivity"/>
+        <activity android:name=".BroadcastActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".fragment.NewsContentActivity"/>
     </application>
 
 </manifest>
