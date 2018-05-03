@@ -1,4 +1,4 @@
-package com.ayuhani.demo.exit;
+package com.ayuhani.demo.broadcast;
 
 import android.content.Intent;
 import android.os.Bundle;

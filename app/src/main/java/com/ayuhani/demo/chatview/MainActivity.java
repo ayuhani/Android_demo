@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ayuhani.demo.R;
-import com.ayuhani.demo.exit.BaseActivity;
+import com.ayuhani.demo.broadcast.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

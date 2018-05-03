@@ -1,4 +1,4 @@
-package com.ayuhani.demo;
+package com.ayuhani.demo.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.ayuhani.demo.R;
 
 public class BroadcastActivity extends AppCompatActivity {
 
