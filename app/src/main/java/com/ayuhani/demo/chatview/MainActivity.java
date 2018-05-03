@@ -1,6 +1,6 @@
 package com.ayuhani.demo.chatview;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,16 +14,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ayuhani.demo.R;
+import com.ayuhani.demo.exit.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private EditText etInput;
     private Button btnSend;
+    private Button btnLogout;
 
     private MsgAdapter msgAdapter;
     private List<Msg> datas;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initMsgs();
-        recyclerView   = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         msgAdapter = new MsgAdapter(datas);
         recyclerView.setAdapter(msgAdapter);
@@ -45,11 +47,19 @@ public class MainActivity extends AppCompatActivity {
                 String content = etInput.getText().toString().trim();
                 if (TextUtils.isEmpty(content))
                     return;
-                Msg msg = new Msg(content,Msg.TYPE_SENT);
+                Msg msg = new Msg(content, Msg.TYPE_SENT);
                 datas.add(msg);
-                msgAdapter.notifyItemInserted(datas.size()-1);
-                recyclerView.scrollToPosition(datas.size()-1);
+                msgAdapter.notifyItemInserted(datas.size() - 1);
+                recyclerView.scrollToPosition(datas.size() - 1);
                 etInput.setText("");
+            }
+        });
+        btnLogout = findViewById(R.id.btn_logout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent("com.ayuhani.broadcast.FORCE_OFFLINE");
+                sendBroadcast(it);
             }
         });
     }
@@ -57,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
     private void initMsgs() {
         datas = new ArrayList<>();
         datas.addAll(Arrays.asList(
-                new Msg("你好，基佬",Msg.TYPE_RECEIVED),
-                new Msg("你有病吧，你是谁啊？",Msg.TYPE_SENT),
-                new Msg("我是你爸爸！",Msg.TYPE_RECEIVED)
+                new Msg("你好，基佬", Msg.TYPE_RECEIVED),
+                new Msg("你有病吧，你是谁啊？", Msg.TYPE_SENT),
+                new Msg("我是你爸爸！", Msg.TYPE_RECEIVED)
         ));
     }
 
 
-    private static class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder>{
+    private static class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
 
         private List<Msg> datas;
 
@@ -74,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_msg,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_msg, parent, false);
             ViewHolder holder = new ViewHolder(view);
             return holder;
         }
@@ -82,11 +92,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             Msg msg = datas.get(position);
-            if (msg.getType()==Msg.TYPE_RECEIVED){
+            if (msg.getType() == Msg.TYPE_RECEIVED) {
                 holder.layoutRight.setVisibility(View.GONE);
                 holder.layoutLeft.setVisibility(View.VISIBLE);
                 holder.tvLeft.setText(msg.getContent());
-            }else {
+            } else {
                 holder.layoutRight.setVisibility(View.VISIBLE);
                 holder.layoutLeft.setVisibility(View.GONE);
                 holder.tvRight.setText(msg.getContent());
@@ -98,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             return datas.size();
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder{
+        public class ViewHolder extends RecyclerView.ViewHolder {
 
             LinearLayout layoutLeft;
             LinearLayout layoutRight;

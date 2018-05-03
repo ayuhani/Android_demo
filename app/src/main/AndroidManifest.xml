@@ -12,10 +12,12 @@
         <activity android:name=".chatview.MainActivity">
         </activity>
         <activity android:name=".fragment.NewsActivity">
-
         </activity>
         <activity android:name=".fragment.NewsContentActivity"/>
         <activity android:name=".BroadcastActivity">
+
+        </activity>
+        <activity android:name=".exit.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

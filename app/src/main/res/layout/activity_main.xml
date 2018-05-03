@@ -5,6 +5,12 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="send force offline broadcast"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -17,17 +23,17 @@
 
         <EditText
             android:id="@+id/et_input"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:maxLines="2"/>
 
         <Button
             android:id="@+id/btn_send"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Send"
-            android:textAllCaps="false"
-            android:layout_height="wrap_content"/>
+            android:textAllCaps="false"/>
     </LinearLayout>
 
 </LinearLayout>
