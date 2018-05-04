@@ -44,7 +44,7 @@ public class FileActivity extends AppCompatActivity {
         try {
             fileInputStream = openFileInput("data");
             reader = new BufferedReader(new InputStreamReader(fileInputStream));
-            String line = "";
+            String line;
             while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
