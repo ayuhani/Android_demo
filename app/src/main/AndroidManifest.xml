@@ -3,6 +3,7 @@
           package="com.ayuhani.demo">
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -24,9 +25,11 @@
         <activity android:name=".storage.FileActivity">
         </activity>
         <activity android:name=".database.DatabaseActivity">
-
         </activity>
         <activity android:name=".permission.PermissionActivity">
+
+        </activity>
+        <activity android:name=".contentprovider.ContactActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
