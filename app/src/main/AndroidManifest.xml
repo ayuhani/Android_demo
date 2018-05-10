@@ -29,7 +29,6 @@
         <activity android:name=".permission.PermissionActivity">
         </activity>
         <activity android:name=".contentprovider.ContactActivity">
-
         </activity>
 
         <provider
@@ -40,6 +39,9 @@
         </provider>
 
         <activity android:name=".contentprovider.ProviderActivity">
+
+        </activity>
+        <activity android:name=".notification.NotifyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
