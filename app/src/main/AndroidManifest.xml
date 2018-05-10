@@ -29,11 +29,7 @@
         <activity android:name=".permission.PermissionActivity">
         </activity>
         <activity android:name=".contentprovider.ContactActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <provider
@@ -42,6 +38,14 @@
             android:enabled="true"
             android:exported="true">
         </provider>
+
+        <activity android:name=".contentprovider.ProviderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
