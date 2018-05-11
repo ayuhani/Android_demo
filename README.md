@@ -1,3 +1,3 @@
 # Android_demo
 
-学习 Android 过程中一些 demo。
+学习 Android 第一行代码的一些 demo。
