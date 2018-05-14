@@ -44,7 +44,6 @@
         <activity android:name=".notification.NotifyActivity">
         </activity>
         <activity android:name=".camera.AlbumActivity">
-
         </activity>
 
         <provider
@@ -58,6 +57,9 @@
         </provider>
 
         <activity android:name=".media.AudioActivity">
+
+        </activity>
+        <activity android:name=".media.VideoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
