@@ -16,6 +16,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class NetworkActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvResponse;
@@ -33,8 +37,27 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_request) {
-            sendRequestWithHttpURLConnection();
+            //            sendRequestWithHttpURLConnection();
+            sendRequestWithOkHttp();
         }
+
+    }
+
+    private void sendRequestWithOkHttp() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url("http://www.baidu.com").build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    showResponse(responseData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     private void sendRequestWithHttpURLConnection() {
