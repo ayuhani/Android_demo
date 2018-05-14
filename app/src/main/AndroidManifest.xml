@@ -60,9 +60,11 @@
         <activity android:name=".media.AudioActivity">
         </activity>
         <activity android:name=".media.VideoActivity">
-
         </activity>
         <activity android:name=".web.WebViewActivity">
+
+        </activity>
+        <activity android:name=".web.NetworkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
