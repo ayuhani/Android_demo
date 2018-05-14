@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -57,9 +58,11 @@
         </provider>
 
         <activity android:name=".media.AudioActivity">
-
         </activity>
         <activity android:name=".media.VideoActivity">
+
+        </activity>
+        <activity android:name=".web.WebViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
