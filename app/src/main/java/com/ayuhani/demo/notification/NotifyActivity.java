@@ -42,8 +42,8 @@ public class NotifyActivity extends AppCompatActivity {
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                 .setContentIntent(pi)
                 .setAutoCancel(true)
-//                .setStyle(new android.support.v4.app.NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory
-//                        .decodeResource(getResources(), R.mipmap.ic_launcher)))
+                .setStyle(new android.support.v4.app.NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory
+                        .decodeResource(getResources(), R.mipmap.ic_launcher)))
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .build();
         manager.notify(1, notification);
