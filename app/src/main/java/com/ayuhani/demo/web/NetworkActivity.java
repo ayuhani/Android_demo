@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ayuhani.demo.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +26,7 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.xml.parsers.SAXParserFactory;
 
@@ -63,14 +66,26 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
                     Request request = new Request.Builder().url("http://192.168.0.101/get_data.json").build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-//                    parseXMLWithPull(responseData);
-//                    parseXMLWithSax(responseData);
-                    parseJSONWithJSONObject(responseData);
+                    //                    parseXMLWithPull(responseData);
+                    //                    parseXMLWithSax(responseData);
+                    //                    parseJSONWithJSONObject(responseData);
+                    parseJSONWithGSON(responseData);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    private void parseJSONWithGSON(String jsonData) {
+        Gson gson = new Gson();
+        List<App> appList = gson.fromJson(jsonData, new TypeToken<List<App>>() {
+        }.getType());
+        for (App app : appList) {
+            Log.d("NetworkActivity", "id is " + app.getId());
+            Log.d("NetworkActivity", "name is " + app.getName());
+            Log.d("NetworkActivity", "version is " + app.getVersion());
+        }
     }
 
     private void parseJSONWithJSONObject(String jsonData) {
@@ -85,7 +100,7 @@ public class NetworkActivity extends AppCompatActivity implements View.OnClickLi
                 Log.d("NetworkActivity", "name is " + name);
                 Log.d("NetworkActivity", "version is " + version);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
