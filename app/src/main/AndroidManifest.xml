@@ -62,9 +62,11 @@
         <activity android:name=".media.VideoActivity">
         </activity>
         <activity android:name=".web.WebViewActivity">
-
         </activity>
         <activity android:name=".web.NetworkActivity">
+
+        </activity>
+        <activity android:name=".service.ThreadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
