@@ -64,9 +64,18 @@
         <activity android:name=".web.WebViewActivity">
         </activity>
         <activity android:name=".web.NetworkActivity">
-
         </activity>
         <activity android:name=".service.ThreadActivity">
+
+        </activity>
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <activity android:name=".service.ServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
