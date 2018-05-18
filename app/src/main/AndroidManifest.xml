@@ -75,17 +75,26 @@
         </service>
 
         <activity android:name=".service.ServiceActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <service
             android:name=".service.MyIntentService"
             android:exported="false">
         </service>
+        <service
+            android:name=".download.DownloadService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <activity android:name=".download.DownloadActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
