@@ -6,6 +6,14 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -19,7 +27,8 @@
         </activity>
         <activity android:name=".fragment.NewsActivity">
         </activity>
-        <activity android:name=".fragment.NewsContentActivity"/>
+        <activity android:name=".fragment.NewsContentActivity">
+        </activity>
         <activity android:name=".broadcast.BroadcastActivity">
         </activity>
         <activity android:name=".broadcast.LoginActivity">
@@ -32,6 +41,34 @@
         </activity>
         <activity android:name=".contentprovider.ContactActivity">
         </activity>
+        <activity android:name=".contentprovider.ProviderActivity">
+        </activity>
+        <activity android:name=".notification.NotifyActivity">
+        </activity>
+        <activity android:name=".camera.AlbumActivity">
+        </activity>
+        <activity android:name=".media.AudioActivity">
+        </activity>
+        <activity android:name=".media.VideoActivity">
+        </activity>
+        <activity android:name=".web.WebViewActivity">
+        </activity>
+        <activity android:name=".web.NetworkActivity">
+        </activity>
+        <activity android:name=".service.ThreadActivity">
+        </activity>
+        <activity android:name=".service.ServiceActivity">
+        </activity>
+        <activity android:name=".download.DownloadActivity">
+
+        </activity>
+        <activity android:name=".lbs.LbsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
         <provider
             android:name=".database.DatabaseProvider"
@@ -39,13 +76,6 @@
             android:enabled="true"
             android:exported="true">
         </provider>
-
-        <activity android:name=".contentprovider.ProviderActivity">
-        </activity>
-        <activity android:name=".notification.NotifyActivity">
-        </activity>
-        <activity android:name=".camera.AlbumActivity">
-        </activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -57,44 +87,27 @@
                 android:resource="@xml/file_paths"/>
         </provider>
 
-        <activity android:name=".media.AudioActivity">
-        </activity>
-        <activity android:name=".media.VideoActivity">
-        </activity>
-        <activity android:name=".web.WebViewActivity">
-        </activity>
-        <activity android:name=".web.NetworkActivity">
-        </activity>
-        <activity android:name=".service.ThreadActivity">
-        </activity>
-
         <service
             android:name=".service.MyService"
             android:enabled="true"
             android:exported="true">
         </service>
 
-        <activity android:name=".service.ServiceActivity">
-
-        </activity>
-
         <service
             android:name=".service.MyIntentService"
             android:exported="false">
         </service>
+
         <service
             android:name=".download.DownloadService"
             android:enabled="true"
             android:exported="true">
         </service>
 
-        <activity android:name=".download.DownloadActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="9ETCot8QFw0tXo5w8P5Aqchbs6PKj0l7"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
