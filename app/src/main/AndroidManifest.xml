@@ -60,14 +60,9 @@
         <activity android:name=".service.ServiceActivity">
         </activity>
         <activity android:name=".download.DownloadActivity">
-
         </activity>
         <activity android:name=".lbs.LbsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <provider
@@ -76,7 +71,6 @@
             android:enabled="true"
             android:exported="true">
         </provider>
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.ayuhani.demo.fileprovider"
@@ -92,12 +86,10 @@
             android:enabled="true"
             android:exported="true">
         </service>
-
         <service
             android:name=".service.MyIntentService"
             android:exported="false">
         </service>
-
         <service
             android:name=".download.DownloadService"
             android:enabled="true"
@@ -108,6 +100,14 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="9ETCot8QFw0tXo5w8P5Aqchbs6PKj0l7"/>
 
+        <activity android:name=".design.MaterialActivity"
+            android:label="Fruits">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
