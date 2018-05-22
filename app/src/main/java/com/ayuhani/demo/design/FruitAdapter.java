@@ -1,6 +1,7 @@
 package com.ayuhani.demo.design;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,7 +34,21 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_fruit, parent, false);
-        return new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Fruit fruit = mFruitList.get(position);
+                Intent it = new Intent(mContext, FruitActivity.class);
+                it.putExtra(FruitActivity.FRUIT_NAME, fruit.getName());
+                it.putExtra(FruitActivity.FRUIT_IMAGE_URL, fruit.getImageUrl());
+                mContext.startActivity(it);
+            }
+        });
+
+        return holder;
     }
 
     @Override

@@ -62,7 +62,6 @@
         <activity android:name=".download.DownloadActivity">
         </activity>
         <activity android:name=".lbs.LbsActivity">
-
         </activity>
 
         <provider
@@ -100,13 +99,16 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="9ETCot8QFw0tXo5w8P5Aqchbs6PKj0l7"/>
 
-        <activity android:name=".design.MaterialActivity"
+        <activity
+            android:name=".design.MaterialActivity"
             android:label="Fruits">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".design.FruitActivity">
         </activity>
     </application>
 
